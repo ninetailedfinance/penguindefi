@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Heading, Text, BaseLayout } from '@pancakeswap-libs/uikit'
-import useI18n from 'hooks/useI18n'
 import Page from 'components/layout/Page'
 import FarmStakingCard from './components/FarmStakingCard'
 import LotteryCard from './components/LotteryCard'
@@ -54,20 +53,18 @@ const Cards = styled(BaseLayout)`
 `
 
 const Home: React.FC = () => {
-  const TranslateString = useI18n()
-
   return (
     <Page>
       <Hero>
         <Heading as="h1" size="xl" mb="24px" color="secondary">
-          {TranslateString(576, 'NineTailed Finance')}
+          NineTailed Finance
         </Heading>
-        <Text>{TranslateString(578, 'The Myth of Decentralized Exchange, Staking, and Farming Protocol on BSC.')}</Text>
+        <Text>The Myth of Decentralized Exchange, Staking, and Farming Protocol on BSC</Text>
       </Hero>
       <div>
         <Cards>
           <FarmStakingCard />
-          <TwitterCard />
+          {/* <TwitterCard /> */}
           <CakeStats />
           <TotalValueLockedCard />
         </Cards>

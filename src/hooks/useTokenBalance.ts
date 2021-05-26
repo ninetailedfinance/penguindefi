@@ -33,9 +33,11 @@ export const useTotalSupply = () => {
 
   useEffect(() => {
     async function fetchTotalSupply() {
-      const cakeContract = getContract(cakeABI, getCakeAddress())
-      const supply = await cakeContract.methods.totalSupply().call()
-      setTotalSupply(new BigNumber(supply))
+      if (getCakeAddress()) {
+        const cakeContract = getContract(cakeABI, getCakeAddress())
+        const supply = await cakeContract.methods.totalSupply().call()
+        setTotalSupply(new BigNumber(supply))
+      }
     }
 
     fetchTotalSupply()
@@ -50,9 +52,11 @@ export const useBurnedBalance = (tokenAddress: string) => {
 
   useEffect(() => {
     const fetchBalance = async () => {
-      const cakeContract = getContract(cakeABI, getCakeAddress())
-      const bal = await cakeContract.methods.balanceOf('0x000000000000000000000000000000000000dEaD').call()
-      setBalance(new BigNumber(bal))
+      if (getCakeAddress()) {
+        const cakeContract = getContract(cakeABI, getCakeAddress())
+        const bal = await cakeContract.methods.balanceOf('0x000000000000000000000000000000000000dEaD').call()
+        setBalance(new BigNumber(bal))
+      }
     }
 
     fetchBalance()
